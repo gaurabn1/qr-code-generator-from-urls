@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRCode Generator</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate QR Codes from URLs</h1>
+        <form action="{% url 'qr_code_generator' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="urlInput">Enter URL</label>
+                <input type="url" id="urlInput" name="data" placeholder="https://example.com" required>
+            </div>
+            <button type="submit">Generate QR Code</button>
+        </form>
+    </div>
+</body>
+</html>
